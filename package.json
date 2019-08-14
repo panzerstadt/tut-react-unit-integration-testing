@@ -36,20 +36,12 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@testing-library/react": "^9.1.1",
-=======
     "async-wait-until": "^1.2.4",
->>>>>>> dev-dependencies-rollback
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
     "nock": "^10.0.6",
-<<<<<<< HEAD
-    "async-wait-until": "^1.2.4"
-=======
     "react-hooks-testing-library": "^0.5.1",
     "@testing-library/react": "^9.1.1"
->>>>>>> dev-dependencies-rollback
   }
 }
