@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  border: 1px solid lightgrey;
+  overflow: hidden;
+  margin: 50px auto;
+  box-shadow: 1px 2px 120px black;
+
+  padding: 10px 30px;
+
+  background-color: white;
+}
+
+.comment {
+  text-align: left;
+  vertical-align: top;
+}
+
+.author {
+  text-align: right;
+  vertical-align: bottom;
+}

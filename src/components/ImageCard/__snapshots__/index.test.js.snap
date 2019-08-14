@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageCard should render correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="imgContainer"
+  >
+    <img
+      alt="image"
+      src="19023.jpeg"
+    />
+  </div>
+  <div
+    className="textContainer"
+  >
+    <h2 />
+    <span />
+  </div>
+</div>
+`;
