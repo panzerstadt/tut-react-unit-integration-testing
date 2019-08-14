@@ -1,33 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import List from "./List";
 import Form from "./Form";
 
+const props = {
+  comments: [
+    {
+      id: 1,
+      comment: "The Way Get Started Is To Quit Talking And Begin Doing.",
+      author: "Walt Disney"
+    },
+    {
+      id: 2,
+      comment:
+        "The Pessimist Sees Difficulty In Every Opportunity. The Optimist Sees Opportunity In Every Difficulty.",
+      author: "Winston Churchill"
+    },
+    {
+      id: 3,
+      comment: "Don’t Let Yesterday Take Up Too Much Of Today.",
+      author: "Will Rogers"
+    }
+  ]
+};
+
 const CommentForm = () => {
-  const props = {
-    comments: [
-      {
-        id: 1,
-        comment: "this is the first comment",
-        author: "first dude"
-      },
-      {
-        id: 2,
-        comment: "this be they seconde comment aye!",
-        author: "second pirate dude"
-      },
-      {
-        id: 3,
-        comment: "prithee thus be thy third commente to thee",
-        author: "third gentleman"
-      }
-    ]
+  const [comments, setComments] = useState([]);
+  const handleSubmit = v => {
+    setComments(prev => {
+      return [...prev, v];
+    });
   };
+
+  // will this be mocked on the test? ANSWER: yes
+  // useEffect(() => {
+  //   setComments(props.comments);
+  // }, [props.comments]);
+
   return (
-    <div>
-      <Form />
+    <div data-testid="comment-component">
+      <Form onSubmit={handleSubmit} />
       <br />
-      <List {...props} />
+      <List comments={comments} />
     </div>
   );
 };

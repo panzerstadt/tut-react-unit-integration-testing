@@ -8,8 +8,8 @@ import Card from "./Card";
 const List = ({ comments }) => {
   return (
     <div className={styles.container}>
-      {comments.map(v => (
-        <Card key={v.id} {...v} />
+      {comments.map((v, i) => (
+        <Card key={i} {...v} />
       ))}
     </div>
   );

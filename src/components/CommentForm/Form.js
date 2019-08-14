@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+
 import { fireEvent } from "@testing-library/react";
 
 import styles from "./Form.module.css";
 
-const Form = () => {
+const Form = ({ onSubmit }) => {
   const [comment, setComment] = useState("");
   const [author, setAuthor] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
 
   const handleSubmit = e => {
-    console.log(comment, author);
+    onSubmit && onSubmit({ comment: comment, author: author });
+    setComment("");
+    setAuthor("");
     e.preventDefault();
   };
 
@@ -22,17 +26,17 @@ const Form = () => {
   }, [comment, author]);
 
   const ref = useRef();
-  useEffect(() => {
-    if (ref) {
-      const el = ref.current;
-      // holy shit this works
-      fireEvent.change(el, {
-        target: {
-          value: "yo this is some magical input fired by @testing-library/react"
-        }
-      });
-    }
-  }, [ref]);
+  // useEffect(() => {
+  //   if (ref) {
+  //     const el = ref.current;
+  //     // holy shit this works
+  //     fireEvent.change(el, {
+  //       target: {
+  //         value: "yo this is some magical input fired by @testing-library/react"
+  //       }
+  //     });
+  //   }
+  // }, [ref]);
 
   return (
     <form
@@ -63,6 +67,10 @@ const Form = () => {
       </button>
     </form>
   );
+};
+
+Form.propTypes = {
+  onSubmit: PropTypes.func
 };
 
 export default Form;
