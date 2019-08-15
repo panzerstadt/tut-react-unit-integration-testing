@@ -2,7 +2,9 @@ import { useState, useEffect, useReducer } from "react";
 import { PropTypes } from "prop-types";
 import axios from "axios";
 
-const DEFAULT_URL = "http://localhost:5000/";
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // grouped state
 const dataFetchReducer = (state, action) => {
@@ -32,8 +34,9 @@ const dataFetchReducer = (state, action) => {
   }
 };
 
-const useFetch = (initialUrl, initialData) => {
-  const [url, setUrl] = useState(initialUrl || DEFAULT_URL);
+const useFetch = (initialUrl, initialData, type) => {
+  const [url, setUrl] = useState(initialUrl);
+  const [postData, setPostData] = useState(initialData || {});
   const [state, dispatch] = useReducer(dataFetchReducer, {
     // dataFetchReducer is the action
     // this here is the initial state
@@ -49,7 +52,16 @@ const useFetch = (initialUrl, initialData) => {
       dispatch({ type: "FETCH_INIT" });
 
       try {
-        const result = await axios(url);
+        let result;
+        if (type === "POST") {
+          // console.log("calling!", url, postData);
+          result = await axios.post(url, postData);
+        } else if (type === "GET") {
+          result = await axios(url);
+        } else {
+          result = await axios(url);
+        }
+
         if (!didCancel) {
           dispatch({ type: "FETCH_SUCCESS", payload: result.data });
         }
@@ -67,10 +79,22 @@ const useFetch = (initialUrl, initialData) => {
       // thereby skipping FETCH_SUCCESS / FETCH_FAILURE
       didCancel = true;
     };
-  }, [url]);
+  }, [url, postData, type]);
 
-  const doFetch = url => {
-    setUrl(url);
+  const doFetch = async (url, postData, force) => {
+    if (force) {
+      setUrl("");
+      await sleep(500);
+    }
+    if (type === "POST") {
+      // console.log("post type!");
+      setPostData(postData);
+      setUrl(url);
+    } else if (type === "GET") {
+      setUrl(url);
+    } else {
+      setUrl(url);
+    }
   };
 
   return [state, doFetch];

@@ -3,8 +3,6 @@ import { renderHook, cleanup, act } from "react-hooks-testing-library";
 import useFetch from "./index";
 
 describe("useFetch", () => {
-  afterEach(() => cleanup);
-
   it("should fetch a live response with id:1", () => {
     // warnings are due to library checking for closeness with reality
     // https://github.com/testing-library/react-testing-library/issues/281

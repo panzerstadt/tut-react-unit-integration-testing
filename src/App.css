@@ -1,5 +1,29 @@
+:root {
+  --black: #000000;
+  --blue: #384ad8;
+  --white: #ffffff;
+  --lightgrey: #d9e2ed;
+  --yellow: #f8c66f;
+
+  --mainRadius: 40px;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 .App {
   text-align: center;
+  font-size: calc(10px + 2vmin);
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--black);
+
+  overflow-x: hidden;
+}
+
+.AppTitle {
+  font-family: "Montserrat Subrayada", sans-serif;
 }
 
 .App-logo {

@@ -1,18 +1,71 @@
 .container {
-  border: 2px solid white;
-  padding: 20px;
-  max-width: calc(100vw - 40px);
+  width: 100%;
+
+  background-color: var(--blue);
+  border-top-left-radius: var(--mainRadius);
+
+  /* to fake the overlap */
+  padding-bottom: 100px;
+  margin-bottom: -100px;
+  padding-right: 100px;
+  margin-right: -100px;
+}
+
+@media (min-width: 800px) {
+  .container {
+    max-width: 400px;
+    height: calc(100vh - 250px);
+  }
+}
+
+.contentContainer {
   display: flex;
   flex-direction: column;
+
+  padding: 40px;
 }
 
-.container > * {
-  margin: 5px 0;
-  padding: 10px;
-  font-size: 0.8em;
+.title {
+  composes: subtitle from "../../App.module.css";
+  color: var(--white);
 }
 
-.container > button {
+.divider {
+  composes: divider from "../../App.module.css";
+  background-color: var(--yellow);
+}
+
+.clearInputBox {
+  padding: 10px 0;
+  background-color: transparent;
+  color: var(--white);
+  border: none;
+  font-size: 25px;
+}
+
+.comments {
+  composes: clearInputBox;
+  resize: none;
+}
+
+@media (max-width: 340px) {
+  .comments {
+    font-size: 20px;
+  }
+}
+
+.comments::placeholder,
+.author::placeholder {
+  color: var(--lightgrey);
+}
+
+.author {
+  composes: clearInputBox;
+  text-align: right;
+  font-size: 12px;
+}
+
+.btn {
   height: 50px;
   font-size: 20px;
   font-weight: 600;
@@ -22,12 +75,14 @@
   border: 2px solid white;
 }
 
-.container > button:disabled {
-  background-color: lightgrey;
-  color: grey;
+.btn:disabled {
+  opacity: 0.5;
+  background-color: var(--blue);
+  color: var(--lightgrey);
+  border: 2px solid rgba(255, 255, 255, 0.199);
 }
 
-.container > button:hover:enabled {
+.btn:hover:enabled {
   background-color: black;
   color: white;
 }

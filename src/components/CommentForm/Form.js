@@ -44,27 +44,43 @@ const Form = ({ onSubmit }) => {
       onSubmit={handleSubmit}
       className={styles.container}
     >
-      <textarea
-        ref={ref}
-        data-testid="comment-input"
-        name="comment"
-        id="comment"
-        cols="30"
-        rows="10"
-        onChange={e => setComment(e.target.value)}
-        value={comment}
-      />
-      <input
-        data-testid="comment-author"
-        name="author"
-        type="text"
-        placeholder="input your name"
-        onChange={e => setAuthor(e.target.value)}
-        value={author}
-      />
-      <button data-testid="comment-submit" type="submit" disabled={isDisabled}>
-        submit
-      </button>
+      <div className={styles.contentContainer}>
+        <h3 className={styles.title}>
+          <strong>Write</strong> something
+        </h3>
+        <div className={styles.divider} />
+        <br />
+        <textarea
+          ref={ref}
+          className={styles.comments}
+          data-testid="comment-input"
+          name="comment"
+          id="comment"
+          cols="20"
+          rows="2"
+          placeholder="something inspirational to start your day."
+          onChange={e => setComment(e.target.value)}
+          value={comment}
+        />
+        <input
+          className={styles.author}
+          data-testid="comment-author"
+          name="author"
+          type="text"
+          placeholder="enter your name. it's your claim to fame."
+          onChange={e => setAuthor(e.target.value)}
+          value={author}
+        />
+        <br />
+        <button
+          className={styles.btn}
+          data-testid="comment-submit"
+          type="submit"
+          disabled={isDisabled}
+        >
+          submit
+        </button>
+      </div>
     </form>
   );
 };

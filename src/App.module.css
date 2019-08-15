@@ -1,0 +1,51 @@
+.introContainer {
+  background-color: var(--black);
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.intro {
+  color: var(--lightgrey);
+}
+
+.titleContainer {
+  background-color: var(--black);
+  display: flex;
+
+  align-items: center;
+  min-height: 100px;
+}
+
+.title {
+  width: 100%;
+  font-family: "Montserrat Subrayada", sans-serif;
+  font-size: 30px;
+
+  color: var(--white);
+}
+
+@media (min-width: 600px) {
+  .titleContainer {
+  }
+  .title {
+    font-size: 60px;
+    text-align: left;
+    margin-left: 40px;
+  }
+}
+
+.subtitle {
+  font-weight: normal;
+  text-align: left;
+  margin: 15px 0;
+}
+
+.divider {
+  height: 5px;
+  width: 50px;
+  background-color: var(--blue);
+}

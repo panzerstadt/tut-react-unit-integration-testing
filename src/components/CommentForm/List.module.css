@@ -1,4 +1,28 @@
 .container {
-  border: 2px solid white;
-  padding: 20px;
+  max-height: 100vh;
+  width: 100%;
+
+  overflow-y: auto;
+
+  background-color: var(--white);
+  border-top-left-radius: var(--mainRadius);
+}
+
+@media (min-width: 800px) {
+  .container {
+    height: calc(100vh - 150px);
+  }
+}
+
+.content {
+  padding: 40px;
+  min-height: 50vh;
+}
+
+.title {
+  composes: subtitle from "../../App.module.css";
+}
+
+.divider {
+  composes: divider from "../../App.module.css";
 }

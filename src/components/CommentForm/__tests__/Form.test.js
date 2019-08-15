@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, act } from "@testing-library/react";
 
 import Form from "../Form";
 
@@ -27,6 +27,7 @@ describe("Comment Form", () => {
     fireEvent.change(commentInput, { target: { value: comment } });
     fireEvent.change(commentAuthor, { target: { value: author } });
     fireEvent.click(submitButton);
+
     expect(onSubmit).toBeCalled();
 
     // check if the right stuff is returned
