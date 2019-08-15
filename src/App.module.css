@@ -9,6 +9,8 @@
 }
 
 .intro {
+  font-size: 30px;
+  font-family: "Montserrat Subrayada", sans-serif;
   color: var(--lightgrey);
 }
 

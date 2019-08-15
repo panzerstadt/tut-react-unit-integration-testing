@@ -31,13 +31,16 @@ const Logo = () => {
   );
 };
 
-const Intro = () => {
+const Intro = ({ onAnimationComplete }) => {
   return (
     <div className={styles.introContainer}>
       <motion.h1
         className={styles.intro}
-        initial={{ height: 0 }}
-        animate={{ height: 300, transition: { delay: 0.3 } }}
+        initial={{ height: 0, opacity: 0 }}
+        animate={{
+          opacity: 1
+        }}
+        onAnimationComplete={onAnimationComplete}
       >
         Quotidian_
       </motion.h1>
@@ -45,29 +48,20 @@ const Intro = () => {
   );
 };
 
-const parent = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.3
-    }
-  }
-};
-
-const children = {
+const variant = {
   hidden: { opacity: 0, y: 100 },
   visible: {
     opacity: 1,
-    y: 0
+    y: 0,
+    transition: { delay: 1.5 }
   }
 };
 
 const intro = {
-  hidden: { opacity: 0, transition: { delay: 0.2 } },
+  hidden: { opacity: 0, transition: { delay: 1 } },
   visible: {
-    opacity: 1
+    opacity: 1,
+    transition: { delay: 1 }
   }
 };
 
@@ -82,33 +76,28 @@ const App = () => {
   return (
     <div className="App">
       <AnimatePresence initial={false}>
-        {!introed && (
+        {!introed ? (
           <motion.div
             key="intro"
             className={styles.intro}
             variants={intro}
             initial="visible"
+            animate="visible"
             exit="hidden"
-            onAnimationComplete={() => setLoadMain(true)}
           >
-            <Intro />
+            <Intro onAnimationComplete={() => setLoadMain(true)} />
           </motion.div>
-        )}
-
-        <motion.div
-          key="main"
-          initial={"hidden"}
-          animate={loadMain ? "visible" : "hidden"}
-          variants={parent}
-        >
-          <motion.div key={1} variants={children}>
+        ) : (
+          <motion.div
+            key="main"
+            initial={"hidden"}
+            animate={"visible"}
+            variants={variant}
+          >
             <Logo />
-          </motion.div>
-
-          <motion.div key={2} variants={children}>
             <CommentForm />
           </motion.div>
-        </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );

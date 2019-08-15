@@ -35,7 +35,7 @@ export const useUnsplash = search => {
   return data;
 };
 
-export const urls = search => {
+export const urls = (search, size) => {
   let prevSearch;
   let cache = [];
 
@@ -58,7 +58,15 @@ export const urls = search => {
         }
 
         const out = cache.shift();
-        return out.urls.regular;
+
+        console.log(out);
+        console.log(size);
+
+        if (size === "small") {
+          return out.urls.thumb;
+        } else {
+          return out.urls.regular;
+        }
       } catch (e) {
         console.error("unsplash fetching error: ", e);
         return "";

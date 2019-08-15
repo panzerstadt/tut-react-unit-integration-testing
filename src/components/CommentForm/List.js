@@ -6,7 +6,7 @@ import styles from "./List.module.css";
 import Card from "./Card";
 import { urls } from "../Unsplash";
 
-const newImg = urls("nature");
+const newImg = urls("nature", "small");
 
 const List = ({ comments }) => {
   const [imgs, setImgs] = useState([]);
@@ -19,7 +19,7 @@ const List = ({ comments }) => {
     if (comments && comments.length > 0) fetch();
   }, [comments]);
 
-  // console.log(imgs);
+  console.log(imgs);
   return (
     <div className={styles.container}>
       <div className={styles.content}>

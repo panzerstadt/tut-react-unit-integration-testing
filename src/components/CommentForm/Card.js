@@ -19,13 +19,13 @@ const Card = ({ comment, author, img }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
   useEffect(() => {
     setImgLoaded(false);
-  }, [comment, author, img]);
+  }, [img]);
 
   return (
     <div className={styles.container}>
       <motion.div
         className={styles.imgContainer}
-        initial={{ opacity: 0 }}
+        initial="hidden"
         animate={imgLoaded ? "visible" : "hidden"}
         variants={variants}
       >
