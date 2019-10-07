@@ -15,34 +15,26 @@ const variants = {
   }
 };
 
-const Img = ({src, onLoad}) => {
-  const [imgLoaded, setImgLoaded] = useState(false);
-  useEffect(() => {
-    return () => setImgLoaded(false);
-  }, [src]);
-
-  useEffect(() => {
-    onLoad && onLoad(true)
-  },[imgLoaded, onLoad])
-
-  return (<img
-    className={styles.img}
-    src={src}
-    alt="inspirational"
-    onLoad={() => setImgLoaded(true)}
-  />)
-
-}
+const Img = ({ src, onLoad }) => {
+  return (
+    <img
+      className={styles.img}
+      src={src}
+      alt="inspirational"
+      onLoad={() => onLoad && onLoad(true)}
+    />
+  );
+};
 
 const Card = ({ comment, author, img }) => {
-  const [imgLoaded, setImgLoaded] = useState(false)
-const handleLoaded = () => {
-  setImgLoaded(true)
-}
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const handleLoaded = () => {
+    setImgLoaded(true);
+  };
 
-useEffect(() => {
-  return () => setImgLoaded(false)
-} ,[])
+  useEffect(() => {
+    return () => setImgLoaded(false);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -52,7 +44,7 @@ useEffect(() => {
         animate={imgLoaded ? "visible" : "hidden"}
         variants={variants}
       >
-        <Img src={img} onLoad={handleLoaded}/>
+        <Img src={img} onLoad={handleLoaded} />
       </motion.div>
       <div className={styles.contentContainer}>
         <h3 data-testid="card-comment" className={styles.comment}>
