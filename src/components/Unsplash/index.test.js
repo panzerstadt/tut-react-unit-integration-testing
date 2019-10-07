@@ -1,7 +1,3 @@
-import React from "react";
-import Unsplash from "unsplash-js";
-import { waitForElement, render, act } from "@testing-library/react";
-
 import { urls } from "../Unsplash";
 
 // the mock of the "unsplash-js" library should
