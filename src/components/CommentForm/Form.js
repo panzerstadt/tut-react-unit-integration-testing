@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
-import { fireEvent } from "@testing-library/react";
-
 import styles from "./Form.module.css";
 
 const Form = ({ onSubmit }) => {

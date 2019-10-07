@@ -1,9 +1,14 @@
 import React from "react";
-import { PropTypes } from "prop-types";
 
 import styles from "./index.module.css";
 
-const ImageCard = ({ src, title, author }) => {
+interface Props {
+  src: string;
+  title?: string;
+  author?: string;
+}
+
+const ImageCard: React.FC<Props> = ({ src, title, author }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
@@ -17,10 +22,5 @@ const ImageCard = ({ src, title, author }) => {
   );
 };
 
-ImageCard.propTypes = {
-  src: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  author: PropTypes.string
-};
 
 export default ImageCard;
