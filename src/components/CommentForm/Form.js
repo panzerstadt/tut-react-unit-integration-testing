@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import styles from "./Form.module.css";
 
 const Form = ({ onSubmit }) => {
+  const ref = useRef();
   const [comment, setComment] = useState("");
   const [author, setAuthor] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
@@ -21,20 +22,7 @@ const Form = ({ onSubmit }) => {
     } else {
       !isDisabled && setIsDisabled(true);
     }
-  }, [comment, author]);
-
-  const ref = useRef();
-  // useEffect(() => {
-  //   if (ref) {
-  //     const el = ref.current;
-  //     // holy shit this works
-  //     fireEvent.change(el, {
-  //       target: {
-  //         value: "yo this is some magical input fired by @testing-library/react"
-  //       }
-  //     });
-  //   }
-  // }, [ref]);
+  }, [comment, author, isDisabled]);
 
   return (
     <form

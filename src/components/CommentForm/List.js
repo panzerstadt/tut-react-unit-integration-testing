@@ -19,7 +19,6 @@ const List = ({ comments }) => {
     if (comments && comments.length > 0) fetch();
   }, [comments]);
 
-  console.log(imgs);
   return (
     <div className={styles.container}>
       <div className={styles.content}>

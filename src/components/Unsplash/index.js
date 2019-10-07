@@ -59,9 +59,6 @@ export const urls = (search, size) => {
 
         const out = cache.shift();
 
-        console.log(out);
-        console.log(size);
-
         if (size === "small") {
           return out.urls.thumb;
         } else {
